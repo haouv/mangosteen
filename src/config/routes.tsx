@@ -1,10 +1,20 @@
 
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import {Foo} from '../views/Foo';
+import {First} from '../components/welcome/first';
+import {Second} from '../components/welcome/second';
+import {Third} from '../components/welcome/third';
+import {Forth} from '../components/welcome/forth';
 import {Bar} from '../views/Bar';
+import { Welcome } from '../views/welcome';
 
 export const routes: RouteRecordRaw[] = [
-  {path: '/', component: Foo},
+  {path: '/', component: Welcome, children: [
+    {path: '1', component: First},
+    {path: '2', component: Second},
+    {path: '3', component: Third},
+    {path: '4', component: Forth},
+  ]},
   {path: '/about', component: Bar}
 ]
 
