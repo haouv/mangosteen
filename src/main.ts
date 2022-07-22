@@ -3,7 +3,7 @@ import { createApp } from "vue";
 import { App } from "./App";
 import { createRouter } from "vue-router";
 import { createWebHashHistory } from "vue-router";
-// import '@svgstore';
+import '@svgstore';
 
 export const history = createWebHashHistory();
 
