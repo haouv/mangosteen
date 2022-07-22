@@ -1,0 +1,14 @@
+.button {
+  // width: 100%;
+  height: 48px;
+  border-radius: 8px;
+  background: #5C33BE;
+  padding: 8px 16px;
+  border: 1px solid #5C33BE;
+  box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.16);
+  font-size: 18px;
+  color: #FFFFFF;
+  &:active {
+    border: 1px solid #457AF7;
+  }
+}
