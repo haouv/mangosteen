@@ -3,13 +3,19 @@ import { Button } from "../shared/button";
 import { Center } from "../shared/center";
 import { FloatButton } from "../shared/float-button";
 import { Icon } from "../shared/icon";
+import { NavBar } from "../shared/navbar";
 import s from "./startpage.module.scss";
 
 export const StartPage = defineComponent({
   setup: () => {
     return () => (
       <div class={s.startpage}>
-        <nav>menu</nav>
+        <NavBar>
+          {{
+            default: "山竹记账",
+            icon: <Icon name="nav" />
+          }}
+        </NavBar>
         <Center class={s.center}>
           <Icon name="pig" class={s.pig}/>
         </Center>
