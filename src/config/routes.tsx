@@ -8,6 +8,7 @@ import { FirstActions } from "../components/welcome/first-actions";
 import { SecondActions } from "../components/welcome/second-actions";
 import { ThirdActions } from "../components/welcome/third-actions";
 import { ForthActions } from "../components/welcome/forth-actions";
+import { StartPage } from "../views/startpage";
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -15,17 +16,12 @@ export const routes: RouteRecordRaw[] = [
     component: Welcome,
     children: [
       { path: "", redirect: "/welcome/1" },
-      { path: "1", components: { main: First, footer: FirstActions } },
-      { path: "2", components: { main: Second, footer: SecondActions  } },
-      { path: "3", components: { main: Third, footer: ThirdActions} },
-      { path: "4", components: { main: Forth, footer: ForthActions } },
+      { path: "1", name:"welcome1", components: { main: First, footer: FirstActions } },
+      { path: "2", name:"welcome2", components: { main: Second, footer: SecondActions  } },
+      { path: "3", name:"welcome3", components: { main: Third, footer: ThirdActions} },
+      { path: "4", name:"welcome4", components: { main: Forth, footer: ForthActions } },
     ],
   },
   { path: "/", redirect: "/welcome" },
+  { path: "/start", component: StartPage },
 ];
-
-export const router = createRouter({
-  // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。
-  history: createWebHashHistory(),
-  routes, // `routes: routes` 的缩写
-});
