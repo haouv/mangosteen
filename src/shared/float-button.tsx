@@ -1,11 +1,15 @@
 import { defineComponent } from "vue";
 import s from './float-button.module.scss';
 
-export const FloatButton = defineComponent({
+interface Props {
+  onClick: (e: MouseEvent) => void
+}
+
+export const FloatButton = defineComponent<Props>({
   setup: (props, context) => {
     return () => (
       <button class={s.floatButton}>
-        <i class="fas fa-plus"></i>
+        {context.slots.default?.()}
       </button>
     );
   }
