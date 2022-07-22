@@ -2,12 +2,14 @@
   width: 56px;
   height: 56px;
   border-radius: 28px;
-  background: var(--button-bg);
+  background: var(--float-button-bg);
   padding: 8px 16px;
-  border: 1px solid var(--button-bg);
+  border: 1px solid var(--float-button-bgg);
   font-size: var(--buton-font-size);
   color: var(--button-text);
   .icon {
-    fill: white;
+    width: 24px;
+    height: 24px;
+    fill: var(--float-button-text);
   }
 }
