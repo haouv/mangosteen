@@ -8,7 +8,10 @@ import { FirstActions } from "../components/welcome/first-actions";
 import { SecondActions } from "../components/welcome/second-actions";
 import { ThirdActions } from "../components/welcome/third-actions";
 import { ForthActions } from "../components/welcome/forth-actions";
-import { StartPage } from "../views/startpage";
+import { StartPage } from "../views/start-page";
+import { ItemPage } from "../views/item-page";
+import { ItemList } from "../components/item/item-list";
+import { ItemCreate } from "../components/item/item-create";
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -24,4 +27,9 @@ export const routes: RouteRecordRaw[] = [
   },
   { path: "/", redirect: "/welcome" },
   { path: "/start", component: StartPage },
+  { path: '/items', component: ItemPage, children: [
+    {path: '', component: ItemList},
+    {path: 'create', component: ItemCreate},
+    {path: 'list', component: ItemList},
+  ]},
 ];
