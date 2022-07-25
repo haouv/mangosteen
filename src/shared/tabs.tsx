@@ -18,6 +18,7 @@ export const Tabs = defineComponent({
     console.log(tabs, props.selected);
     return () => <div class={s.tabs}>
       <ol class={s.tabs_nav}>
+<<<<<<< HEAD
         {tabs.map(item => 
         <li class={item.props?.name == props.selected ? s.selected : ""} 
             onClick={() => props.onUpdateSelected?.(item.props?.name)}>
@@ -26,6 +27,16 @@ export const Tabs = defineComponent({
       </ol>
       <div>
         {tabs.find(tab => tab.props?.name === props.selected)?.props?.children}
+=======
+        {tabs.map(item =>
+          <li class={item.props?.name == props.selected ? s.selected : ""}
+            onClick={() => props.onUpdateSelected?.(item.props?.name)}>
+            {item.props?.name}
+          </li>)}
+      </ol>
+      <div>
+        {tabs.find(tab => tab.props?.name === props.selected)}
+>>>>>>> 14a05bf (新增tabs组件)
       </div>
     </div>
   }

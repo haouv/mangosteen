@@ -8,17 +8,16 @@ export const ItemCreate = defineComponent({
   setup: (props, context) => {
     const selectTab = ref<string>("支出");
     const onSelectedTab = (tabName: string) => {
-      console.log(tabName);
       selectTab.value = tabName;
     }
     return () => (<div class={s.item_create}>
       <MainLayout>
         {{
-          title: () => "山竹记账",
+          title: () => "记一笔",
           icon: () => <Icon name="back" />,
           default: () => <Tabs selected={selectTab.value} onUpdateSelected={onSelectedTab}>
-            <Tab name="支出"></Tab>
-            <Tab name="收入"></Tab>
+            <Tab name="支出">支出内容</Tab>
+            <Tab name="收入">收入内容</Tab>
           </Tabs>
         }}
       </MainLayout>
