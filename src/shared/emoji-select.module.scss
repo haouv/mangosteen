@@ -16,19 +16,27 @@
       color: #999999;
     }
   }
-  ol {
+  >ol {
     display: flex;
     flex-wrap: wrap;
+    font-size: 22px;
     line-height: 32px;
-    height: calc(32px * 14);
+    height: calc(32px * 12);
+    padding: 1px 4px;
+    align-content: flex-start;
     overflow: auto;
     &::-webkit-scrollbar {
       display: none;
     }
-    li {
-      flex: 1;
-      font-size: 32px;
-      margin: 0 2px;
+    >li {
+      flex-grow: 0;
+      flex-shrink: 0;
+      width: 10%;
+      text-align: center;
+      &.selectedEmoji{
+        outline: 1px solid var(--button-bg);
+        border-radius: var(--input-radius);
+      }
     }
   }
 }
