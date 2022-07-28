@@ -4,7 +4,7 @@ import s from "./emoji-select.module.scss";
 
 export const EmojiSelect = defineComponent({
   setup: () => {
-    const refSelected = ref(1);
+    const refSelected = ref(0);
     const table: [string, string[]][] = [
       ['表情', ['face-smiling', 'face-affection', 'face-tongue', 'face-hand',
         'face-neutral-skeptical', 'face-sleepy', 'face-unwell', 'face-hat',
@@ -26,28 +26,27 @@ export const EmojiSelect = defineComponent({
       ['运动', ['sport', 'game']],
     ]
 
-    const selectedEmojiTypes = table[refSelected.value][1];
-    const selectedEmojis = selectedEmojiTypes.map((type: string) => {
-      return emojis.find(emoji => emoji[0] === type)?.[1].map(item => <li>{item}</li>)
+    const selectedEmojis = computed(() => {
+      const selectedEmojiTypes = table[refSelected.value][1];
+      return selectedEmojiTypes.map((type: string) => {
+        return emojis.find(emoji => emoji[0] === type)?.[1].map(item => <li>{item}</li>)
+      });
     })
-    console.log(selectedEmojiTypes, selectedEmojis)
+
+    const onEmojiTypeClick = (index: number) => {
+      refSelected.value = index;
+    }
+
     return () => (
       <div class={s.wrapper}>
-        <nav>
-          <span>表情</span>
-          <span>手势</span>
-          <span>职业</span>
-          <span>衣服</span>
-          <span>动物</span>
-          <span>自然</span>
-          <span>食物</span>
-          <span>运动</span>
-          <span>运动</span>
-          <span>运动</span>
-          <span>运动</span>
+        <nav class={s.nav}>
+          {table.map((item, index) => (
+            <span class={refSelected.value === index ? s.selected: ''} 
+                  onClick={() => {onEmojiTypeClick(index)}}>{item[0]}</span>
+          ))}
         </nav>
         <ol>
-          {selectedEmojis}
+          {selectedEmojis.value}
         </ol>
       </div>
     )

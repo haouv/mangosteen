@@ -2,7 +2,7 @@
   width: 100%;
   border: 1px solid #5C33BE;
   border-radius: 8px;
-  nav {
+  .nav {
     display: flex;
     flex-wrap: nowrap;
     overflow: auto;
@@ -14,6 +14,9 @@
       padding: 6px;
       flex-shrink: 0;
       color: #999999;
+      &.selected {
+        color: #333333;
+      }
     }
   }
   >ol {
