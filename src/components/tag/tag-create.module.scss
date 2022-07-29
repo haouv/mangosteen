@@ -45,3 +45,12 @@
   }
 }
 
+.actions {
+  padding: 0 16px 16px 16px;
+  display: flex;
+  justify-content: space-between;
+  .remove_tags, .remove_tags_and_items {
+    width: calc(50% - 8px);
+  }
+}
+

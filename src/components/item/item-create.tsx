@@ -11,22 +11,145 @@ export const ItemCreate = defineComponent({
     const onSelectedTab = (tabName: string) => {
       selectTab.value = tabName;
     }
-    return () => (<div class={s.item_create}>
-      <MainLayout>
+    const expenseItems = [
+      { id: 1, name: '餐费', sign: '￥', category: 'expenses' },
+      { id: 2, name: '打车', sign: '￥', category: 'expenses' },
+      { id: 3, name: '聚餐', sign: '￥', category: 'expenses' },
+      { id: 4, name: '打车', sign: '￥', category: 'expenses' },
+      { id: 5, name: '聚餐', sign: '￥', category: 'expenses' },
+      { id: 6, name: '打车', sign: '￥', category: 'expenses' },
+      { id: 7, name: '聚餐', sign: '￥', category: 'expenses' },
+      { id: 1, name: '餐费', sign: '￥', category: 'expenses' },
+      { id: 2, name: '打车', sign: '￥', category: 'expenses' },
+      { id: 3, name: '聚餐', sign: '￥', category: 'expenses' },
+      { id: 4, name: '打车', sign: '￥', category: 'expenses' },
+      { id: 5, name: '聚餐', sign: '￥', category: 'expenses' },
+      { id: 6, name: '打车', sign: '￥', category: 'expenses' },
+      { id: 7, name: '聚餐', sign: '￥', category: 'expenses' },
+      { id: 1, name: '餐费', sign: '￥', category: 'expenses' },
+      { id: 2, name: '打车', sign: '￥', category: 'expenses' },
+      { id: 1, name: '餐费', sign: '￥', category: 'expenses' },
+      { id: 2, name: '打车', sign: '￥', category: 'expenses' },
+      { id: 3, name: '聚餐', sign: '￥', category: 'expenses' },
+      { id: 4, name: '打车', sign: '￥', category: 'expenses' },
+      { id: 5, name: '聚餐', sign: '￥', category: 'expenses' },
+      { id: 6, name: '打车', sign: '￥', category: 'expenses' },
+      { id: 7, name: '聚餐', sign: '￥', category: 'expenses' },
+      { id: 1, name: '餐费', sign: '￥', category: 'expenses' },
+      { id: 2, name: '打车', sign: '￥', category: 'expenses' },
+      { id: 3, name: '聚餐', sign: '￥', category: 'expenses' },
+      { id: 4, name: '打车', sign: '￥', category: 'expenses' },
+      { id: 5, name: '聚餐', sign: '￥', category: 'expenses' },
+      { id: 6, name: '打车', sign: '￥', category: 'expenses' },
+      { id: 7, name: '聚餐', sign: '￥', category: 'expenses' },
+      { id: 1, name: '餐费', sign: '￥', category: 'expenses' },
+      { id: 2, name: '打车', sign: '￥', category: 'expenses' },
+      { id: 3, name: '聚餐', sign: '￥', category: 'expenses' },
+      { id: 4, name: '打车', sign: '￥', category: 'expenses' },
+      { id: 5, name: '聚餐', sign: '￥', category: 'expenses' },
+      { id: 6, name: '打车', sign: '￥', category: 'expenses' },
+      { id: 7, name: '聚餐', sign: '￥', category: 'expenses' },
+      { id: 1, name: '餐费', sign: '￥', category: 'expenses' },
+      { id: 2, name: '打车', sign: '￥', category: 'expenses' },
+      { id: 3, name: '聚餐', sign: '￥', category: 'expenses' },
+      { id: 4, name: '打车', sign: '￥', category: 'expenses' },
+      { id: 5, name: '聚餐', sign: '￥', category: 'expenses' },
+      { id: 6, name: '打车', sign: '￥', category: 'expenses' },
+      { id: 7, name: '聚餐', sign: '￥', category: 'expenses' },
+    ];
+    const incomeItems = [
+      { id: 4, name: '工资', sign: '￥', category: 'income' },
+      { id: 5, name: '彩票', sign: '￥', category: 'income' },
+      { id: 6, name: '滴滴', sign: '￥', category: 'income' },
+      { id: 11, name: '彩票', sign: '￥', category: 'income' },
+      { id: 18, name: '滴滴', sign: '￥', category: 'income' },
+      { id: 17, name: '彩票', sign: '￥', category: 'income' },
+      { id: 19, name: '滴滴', sign: '￥', category: 'income' },
+      { id: 4, name: '工资', sign: '￥', category: 'income' },
+      { id: 5, name: '彩票', sign: '￥', category: 'income' },
+      { id: 6, name: '滴滴', sign: '￥', category: 'income' },
+      { id: 11, name: '彩票', sign: '￥', category: 'income' },
+      { id: 18, name: '滴滴', sign: '￥', category: 'income' },
+      { id: 17, name: '彩票', sign: '￥', category: 'income' },
+      { id: 19, name: '滴滴', sign: '￥', category: 'income' },
+      { id: 4, name: '工资', sign: '￥', category: 'income' },
+      { id: 5, name: '彩票', sign: '￥', category: 'income' },
+      { id: 6, name: '滴滴', sign: '￥', category: 'income' },
+      { id: 11, name: '彩票', sign: '￥', category: 'income' },
+      { id: 18, name: '滴滴', sign: '￥', category: 'income' },
+      { id: 17, name: '彩票', sign: '￥', category: 'income' },
+      { id: 19, name: '滴滴', sign: '￥', category: 'income' },
+      { id: 4, name: '工资', sign: '￥', category: 'income' },
+      { id: 5, name: '彩票', sign: '￥', category: 'income' },
+      { id: 6, name: '滴滴', sign: '￥', category: 'income' },
+      { id: 11, name: '彩票', sign: '￥', category: 'income' },
+      { id: 18, name: '滴滴', sign: '￥', category: 'income' },
+      { id: 17, name: '彩票', sign: '￥', category: 'income' },
+      { id: 19, name: '滴滴', sign: '￥', category: 'income' },
+      { id: 4, name: '工资', sign: '￥', category: 'income' },
+      { id: 5, name: '彩票', sign: '￥', category: 'income' },
+      { id: 6, name: '滴滴', sign: '￥', category: 'income' },
+      { id: 11, name: '彩票', sign: '￥', category: 'income' },
+      { id: 18, name: '滴滴', sign: '￥', category: 'income' },
+      { id: 17, name: '彩票', sign: '￥', category: 'income' },
+      { id: 19, name: '滴滴', sign: '￥', category: 'income' },
+    ];
+    return () => (
+      <MainLayout class={s.layout}>
         {{
           title: () => "记一笔",
           icon: () => <Icon name="back" />,
           default: () => <>
-            <Tabs selected={selectTab.value} onUpdateSelected={onSelectedTab}>
-              <Tab name="支出">支出内容</Tab>
-              <Tab name="收入">收入内容</Tab>
-            </Tabs>
-            <div class={s.input_pad_wrapper}>
-              <InputPad />
+            <div class={s.wrapper}>
+              <Tabs class={s.tabs} selected={selectTab.value} onUpdateSelected={onSelectedTab}>
+                <Tab name="支出" class={s.tags_wrapper}>
+                  <div class={s.tag}>
+                    <div class={s.sign}>
+                      <Icon name="plus" style={{ fill: '#8F4CD7' }}></Icon>
+                    </div>
+                    <div class={s.name}>
+                      标签
+                    </div>
+                  </div>
+                  {expenseItems.map(item => (
+                    <div class={s.tag}>
+                      <div class={[s.sign, s.selected]}>
+                        {item.sign}
+                      </div>
+                      <div class={s.name}>
+                        {item.name}
+                      </div>
+                    </div>
+                  ))}
+                </Tab>
+                <Tab name="收入" class={s.tags_wrapper}>
+                  <div class={s.tag}>
+                    <div class={s.sign}>
+                      <Icon name="plus" class={s.createTag} />
+                    </div>
+                    <div class={s.name}>
+                      新增
+                    </div>
+                  </div>
+                  {incomeItems.map(tag =>
+                    <div class={[s.tag, s.selected]}>
+                      <div class={s.sign}>
+                        {tag.sign}
+                      </div>
+                      <div class={s.name}>
+                        {tag.name}
+                      </div>
+                    </div>
+                  )}
+                </Tab>
+              </Tabs>
+              <div class={s.input_pad_wrapper}>
+                <InputPad />
+              </div>
             </div>
           </>
         }}
       </MainLayout>
-    </div>)
+    )
   }
 })
