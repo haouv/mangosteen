@@ -3,6 +3,10 @@ import s from './tabs.module.scss';
 
 export const Tabs = defineComponent({
   props: {
+    classPrefix: {
+      type: String,
+      require: false
+    },
     selected: {
       type: String as PropType<string>,
       required: false,
@@ -15,11 +19,10 @@ export const Tabs = defineComponent({
   setup: (props, context) => {
     const tabs = context.slots.default?.();
     if (!tabs) return () => null;
-    console.log(tabs, props.selected);
-    return () => <div class={s.tabs}>
-      <ol class={s.tabs_nav}>
+    return () => <div class={[s.tabs, props.classPrefix + '_tabs']}>
+      <ol class={[s.tabs_nav, props.classPrefix + '_tabs_nav']}>
         {tabs.map(item =>
-          <li class={item.props?.name == props.selected ? s.selected : ""}
+          <li class={item.props?.name == props.selected ? [s.selected, props.classPrefix + '_selected'] : ""}
             onClick={() => context.emit('update:selected', item.props?.name)}>
             {item.props?.name}
           </li>)}

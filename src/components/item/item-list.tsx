@@ -15,11 +15,11 @@ export const ItemList = defineComponent({
           title: () => "山竹记账",
           icon: () => <Icon name="nav" onClick={() => {}}/>,
           default: () => (
-            <Tabs class={s.tabs} v-model:selected={selectTab.value}>
-              <Tab name="本月" class={s.tab}>list1</Tab>
-              <Tab name="上月" class={s.tab}>list2</Tab>
-              <Tab name="今年" class={s.tab}>list3</Tab>
-              <Tab name="自定义时间" class={s.tab}>list4</Tab>
+            <Tabs class={s.items} classPrefix={'custom_items'} v-model:selected={selectTab.value}>
+              <Tab name="本月" class={s.tab}>本月</Tab>
+              <Tab name="上月" class={s.tab}>上月</Tab>
+              <Tab name="今年" class={s.tab}>今年</Tab>
+              <Tab name="自定义时间" class={s.tab}>自定义时间</Tab>
             </Tabs>
           )
         }}
