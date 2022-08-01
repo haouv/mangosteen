@@ -15,6 +15,7 @@ import { ItemCreate } from "../components/item/item-create";
 import { TagPage } from "../views/TagPage";
 import { TagCreate } from "../components/tag/tag-create";
 import { TagEdit } from "../components/tag/tag-edit";
+import { SignInPage } from "../views/signin-page";
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -22,21 +23,49 @@ export const routes: RouteRecordRaw[] = [
     component: Welcome,
     children: [
       { path: "", redirect: "/welcome/1" },
-      { path: "1", name:"welcome1", components: { main: First, footer: FirstActions } },
-      { path: "2", name:"welcome2", components: { main: Second, footer: SecondActions  } },
-      { path: "3", name:"welcome3", components: { main: Third, footer: ThirdActions} },
-      { path: "4", name:"welcome4", components: { main: Forth, footer: ForthActions } },
+      {
+        path: "1",
+        name: "welcome1",
+        components: { main: First, footer: FirstActions },
+      },
+      {
+        path: "2",
+        name: "welcome2",
+        components: { main: Second, footer: SecondActions },
+      },
+      {
+        path: "3",
+        name: "welcome3",
+        components: { main: Third, footer: ThirdActions },
+      },
+      {
+        path: "4",
+        name: "welcome4",
+        components: { main: Forth, footer: ForthActions },
+      },
     ],
   },
   { path: "/", redirect: "/welcome" },
   { path: "/start", component: StartPage },
-  { path: '/items', component: ItemPage, children: [
-    {path: '', component: ItemList},
-    {path: 'create', component: ItemCreate},
-    {path: 'list', component: ItemList},
-  ]},
-  { path: "/tags", component: TagPage, children: [
-    { path: 'create', component: TagCreate },
-    { path: ':id/edit', component: TagEdit },
-  ] },
+  {
+    path: "/items",
+    component: ItemPage,
+    children: [
+      { path: "", component: ItemList },
+      { path: "create", component: ItemCreate },
+      { path: "list", component: ItemList },
+    ],
+  },
+  {
+    path: "/tags",
+    component: TagPage,
+    children: [
+      { path: "create", component: TagCreate },
+      { path: ":id/edit", component: TagEdit },
+    ],
+  },
+  {
+    path: "/sign_in",
+    component: SignInPage,
+  }
 ];
