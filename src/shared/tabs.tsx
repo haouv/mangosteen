@@ -11,10 +11,10 @@ export const Tabs = defineComponent({
       type: String as PropType<string>,
       required: false,
     },
-    onUpdateSelected: {
-      type: Function as PropType<(selected: string) => void>,
-      required: false,
-    }
+    // onUpdateSelected: {
+    //   type: Function as PropType<(selected: string) => void>,
+    //   required: false,
+    // }
   },
   setup: (props, context) => {
     const tabs = context.slots.default?.();
