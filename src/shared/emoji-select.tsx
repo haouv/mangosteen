@@ -1,9 +1,17 @@
-import { computed, defineComponent, ref } from "vue";
+import { computed, defineComponent, PropType, ref } from "vue";
 import { emojis } from "./emojis";
 import s from "./emoji-select.module.scss";
 
 export const EmojiSelect = defineComponent({
-  setup: () => {
+  props: {
+    modelValue: {
+      type: String
+    },
+    onUpdateModelValue: {
+      type: Function as PropType<(emoji: string) => void>
+    }
+  },
+  setup: (props, context) => {
     const refSelected = ref(0);
     const table: [string, string[]][] = [
       ['表情', ['face-smiling', 'face-affection', 'face-tongue', 'face-hand',
@@ -29,7 +37,11 @@ export const EmojiSelect = defineComponent({
     const selectedEmojis = computed(() => {
       const selectedEmojiTypes = table[refSelected.value][1];
       return selectedEmojiTypes.map((type: string) => {
-        return emojis.find(emoji => emoji[0] === type)?.[1].map(item => <li>{item}</li>)
+        return emojis.find(emoji => emoji[0] === type)?.[1].map(item =>
+          <li class={props.modelValue === item ? s.selectedEmoji : ''} 
+              onClick={() => onEmojiClick(item) }>
+            {item}
+          </li >)
       });
     })
 
@@ -37,12 +49,20 @@ export const EmojiSelect = defineComponent({
       refSelected.value = index;
     }
 
+    const onEmojiClick = (emoji: string) => {
+      if (props.onUpdateModelValue) {
+        props.onUpdateModelValue(emoji);
+      } else {
+        context.emit('update:modelValue', emoji);
+      }
+    }
+
     return () => (
       <div class={s.wrapper}>
         <nav class={s.nav}>
           {table.map((item, index) => (
-            <span class={refSelected.value === index ? s.selected: ''} 
-                  onClick={() => {onEmojiTypeClick(index)}}>{item[0]}</span>
+            <span class={refSelected.value === index ? s.selected : ''}
+              onClick={() => { onEmojiTypeClick(index) }}>{item[0]}</span>
           ))}
         </nav>
         <ol>
