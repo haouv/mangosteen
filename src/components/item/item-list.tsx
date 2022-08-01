@@ -3,6 +3,7 @@ import { defineComponent, PropType, reactive, ref } from "vue";
 import { MainLayout } from "../../layouts/main-layout";
 import { Form, FormItem } from "../../shared/form";
 import { Icon } from "../../shared/icon";
+import { OverlayIcon } from "../../shared/overlay";
 import { Tab, Tabs } from "../../shared/tabs";
 import { Time } from "../../shared/time";
 import s from "./item-list.module.scss";
@@ -31,7 +32,7 @@ export const ItemList = defineComponent({
       <MainLayout>
         {{
           title: () => "山竹记账",
-          icon: () => <Icon name="nav" onClick={() => {}} />,
+          icon: () => <OverlayIcon />,
           default: () => (
             <>
               <Tabs
