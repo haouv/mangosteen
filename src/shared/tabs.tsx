@@ -27,7 +27,7 @@ export const Tabs = defineComponent({
             {item.props?.name}
           </li>)}
       </ol>
-      <div>
+      <div style={{width: '100%'}}>
         {tabs.find(tab => tab.props?.name === props.selected)}
       </div>
     </div>
