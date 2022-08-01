@@ -8,7 +8,6 @@ import { ItemSummary } from "./item-summary";
 
 export const ItemList = defineComponent({
   setup: () => {
-    const selectTabRef = ref(0);
     const selectTab = ref<string>("本月");
     const time = new Time();
     const customTime = reactive({
@@ -26,7 +25,11 @@ export const ItemList = defineComponent({
           title: () => "山竹记账",
           icon: () => <Icon name="nav" onClick={() => { }} />,
           default: () => (
-            <Tabs class={s.items} classPrefix={'custom_items'} v-model:selected={selectTab.value}>
+            <Tabs class={s.items} classPrefix={'custom_items'}
+              v-model:selected={selectTab.value}
+              onUpdate:selected={() => {
+                console.log('onUpdate:selected');
+              }}>
               <Tab name="本月" class={s.tab}>
                 <ItemSummary startDate={timeList[0].start.format()}
                   endDate={timeList[0].start.format()}></ItemSummary>

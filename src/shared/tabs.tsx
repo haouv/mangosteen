@@ -11,11 +11,8 @@ export const Tabs = defineComponent({
       type: String as PropType<string>,
       required: false,
     },
-    // onUpdateSelected: {
-    //   type: Function as PropType<(selected: string) => void>,
-    //   required: false,
-    // }
   },
+  emits: ['update:selected'],
   setup: (props, context) => {
     const tabs = context.slots.default?.();
     if (!tabs) return () => null;
@@ -27,7 +24,7 @@ export const Tabs = defineComponent({
             {item.props?.name}
           </li>)}
       </ol>
-      <div style={{width: '100%'}}>
+      <div style={{ width: '100%' }}>
         {tabs.find(tab => tab.props?.name === props.selected)}
       </div>
     </div>
