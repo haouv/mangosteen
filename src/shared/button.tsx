@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, defineComponent, PropType } from "vue";
+import { defineComponent, PropType } from "vue";
 import s from "./button.module.scss";
 
 interface Props {
@@ -18,13 +18,18 @@ export const Button = defineComponent({
       type: String as PropType<"important" | "normal" | "danger">,
       default: "important",
     },
+    disabled: {
+      type: Boolean,
+      default: false
+    }
   },
   setup: (props, context) => {
     return () => (
       <button
-        class={[s.button, s[props.level]]}
+        class={[s.button, s[props.level], s[props.disabled ? "disabled" : ""]]}
         type={props.type}
         onClick={props.onClick}
+        disabled={props.disabled}
       >
         {context.slots.default?.()}
       </button>
