@@ -56,7 +56,7 @@ export const FormItem = defineComponent({
         if (timerCounts.value > 1) {
           timerCounts.value -= 1;
         } else {
-          clearInterval();
+          clearInterval(timer.value);
           timer.value = undefined;
           timerCounts.value = props.countFrom;
         }
@@ -64,8 +64,9 @@ export const FormItem = defineComponent({
     };
     const onValidationCodeClick = () => {
       props.onClick?.();
-      startCount();
     };
+    context.expose({ startCount });
+
     const content = computed(() => {
       switch (props.type) {
         case "text":
